@@ -1,66 +1,72 @@
-
 entity Offer {
-	name String
-    startDate Instant
-    endDate   Instant
-    subscriptionPeriod Integer 
-    chargingPeriod Integer 
-    recurring  Boolean 
-    price Double 
-  	secondSubscription Boolean 
-    description String 
+  name String,
+  startDate Instant,
+  endDate Instant,
+  subscriptionPeriod Integer,
+  chargingPeriod Integer,
+  recurring Boolean,
+  price Double,
+  secondSubscription Boolean,
+  description String
 }
 
 entity Good {
-	 name String  
-     amount Integer 
+  name String,
+  amount Integer
 }
-entity GoodType{
-	name String
+
+entity GoodType {
+  name String
 }
+
 entity Person {
-	name String
-    surname String
-    birthdate LocalDate 
+  name String,
+  surname String,
+  birthdate LocalDate
 }
+
 entity Subscriber {
-	msisdnNo String 
-    imsi String 
-    balance Double 
-}
-entity Subscription {
-	 startDate Instant
-     endDate Instant 
-     cost Double 
-     discountAmount Integer 
-     status Status
-}
-enum Status{
-	ACTIVE , TERMINATED , SUSPENDED
+  msisdnNo String,
+  imsi String,
+  balance Double
 }
 
+entity UserSubscription {
+  startDate Instant,
+  endDate Instant,
+  cost Double,
+  discountAmount Integer,
+  status Status
+}
 
-relationship ManyToOne {
-	Subscriber to Person
-}
-relationship ManyToOne {
-	Good to GoodType
-}
-relationship ManyToOne {
-	Subscription to Subscriber
+enum Status {
+  ACTIVE, TERMINATED, SUSPENDED
 }
 
 relationship ManyToOne {
-	Subscription to Offer 
+  Subscriber to Person
+}
+
+relationship ManyToOne {
+  Good to GoodType
+}
+
+relationship ManyToOne {
+  UserSubscription to Subscriber
+}
+
+relationship ManyToOne {
+  UserSubscription to Offer
 }
 
 relationship ManyToMany {
-	Good to Offer
+  Good to Offer
 }
+
 relationship ManyToMany {
-	Offer to Good
+  Offer to Good
 }
+
 relationship OneToMany {
-	Subscriber to Subscription
+  Subscriber to UserSubscription
 }
-
