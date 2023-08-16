@@ -1,8 +1,8 @@
 
 entity Offer {
 	name String
-    startDate LocalDateTime
-    endDate   LocalDateTime 
+    startDate Instant
+    endDate   Instant
     subscriptionPeriod Integer 
     chargingPeriod Integer 
     recurring  Boolean 
@@ -23,14 +23,14 @@ entity Person {
     surname String
     birthdate LocalDate 
 }
-entity Subsciber {
+entity Subscriber {
 	msisdnNo String 
     imsi String 
     balance Double 
 }
 entity Subscription {
-	 startDate LocalDateTime 
-     endDate LocalDateTime 
+	 startDate Instant
+     endDate Instant 
      cost Double 
      discountAmount Integer 
      status Status
