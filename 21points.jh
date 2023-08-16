@@ -1,0 +1,61 @@
+
+/**
+ * Points entity.
+ * @author The JHipster team.
+ */
+entity Points {
+	date LocalDate	,
+	exercise Integer,
+    meals Integer ,
+    alcohol Integer,
+    notes String
+}
+
+/**
+ * The User entity.
+ */
+entity User {
+	/**
+	* The firstname attribute.
+	*/
+	name String,
+	email String,
+}
+
+entity Setting {
+	weeklyGoal Integer required ,
+	weeklyUnits Integer required
+}
+
+entity Weight {
+	date LocalDate,
+    weight Integer
+}
+entity BloodPressure{
+	date LocalDate,
+    systolic String,
+  	diastolic String
+}
+
+relationship OneToOne {
+	User to Setting
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Points to Users
+}
+relationship OneToMany {
+	BloodPressure to User
+}
+relationship OneToMany {
+	 Weight to User
+}
+
+// defining multiple oneToOne relationships
+
+
+
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
