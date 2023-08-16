@@ -1,0 +1,15 @@
+entity Person {
+  firstName String,
+  lastName String,
+  age Integer
+}
+
+entity Subscription {
+  type String,
+  startDate LocalDate,
+  endDate LocalDate
+}
+
+relationship OneToMany {
+  Person to Subscription
+}
